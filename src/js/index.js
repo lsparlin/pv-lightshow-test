@@ -1,5 +1,7 @@
 var randomInt = require('random-int')
-var io = require('socket.io-client')()
+var io = require('socket.io-client')
+
+var socket = io.connect('http://localhost:3000')
 
 let bodyEl = document.getElementsByTagName('body')[0]
 let bgStyleTemplate = (color) => `background-color: ${color};`
@@ -11,6 +13,11 @@ const changeColorRandomOnLoad = () => {
 }
 
 const changeColorOnSocketSubscription = () => {
+  socket.on('change-color', data => {
+    console.log('change color', data)
+    bodyEl.setAttribute('style', bgStyleTemplate('#' + data.color))
+  })
 }
 
 changeColorRandomOnLoad()
+changeColorOnSocketSubscription()
