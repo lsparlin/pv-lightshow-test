@@ -3,19 +3,19 @@ var io = require('socket.io-client')
 
 var socket = io.connect('https://pv-lightshow-server.herokuapp.com')
 
-let bodyEl = document.getElementsByTagName('body')[0]
+let bgEl = document.getElementById('background-content')
 let bgStyleTemplate = (color) => `background-color: ${color};`
 let colors = ENV.config.randomColors
 
 const changeColorRandomOnLoad = () => {
   let randomColor = colors[randomInt(colors.length)]
-  bodyEl.setAttribute('style', bgStyleTemplate(randomColor))
+  bgEl.setAttribute('style', bgStyleTemplate(randomColor))
 }
 
 const changeColorOnSocketSubscription = () => {
   socket.on('change-color', data => {
     console.log('change color', data)
-    bodyEl.setAttribute('style', bgStyleTemplate('#' + data.color))
+    bgEl.setAttribute('style', bgStyleTemplate('#' + data.color))
   })
 }
 
