@@ -7,5 +7,15 @@
 </head>
   <body style="background-color: #000;">
     <script type="text/javascript" src="/resources/js/bundle.js"></script>
+    <script type="text/javascript">
+      // When ready...
+      window.addEventListener("load",function() {
+        // Set a timeout...
+        setTimeout(function(){
+          // Hide the address bar!
+          window.scrollTo(0, 1);
+        }, 0);
+      });
+    </script>
   </body>
 </html>
