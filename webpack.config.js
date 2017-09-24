@@ -15,7 +15,8 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
-        'config': path.resolve(__dirname, 'app.config.js')
+        'config': path.resolve(__dirname, 'app.config.js'),
+        'my-nosleep': __dirname + '/lib/NoSleep.min'
       }
     },
     plugins: [

@@ -1,6 +1,6 @@
 var randomInt = require('random-int')
 var io = require('socket.io-client')
-import NoSleep from 'nosleep.js'
+import NoSleep from 'my-nosleep'
 
 var socket = io.connect(ENV.socketUrl || 'http://localhost:3000')
 var noSleep = new NoSleep()
