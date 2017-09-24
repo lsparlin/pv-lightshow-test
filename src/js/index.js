@@ -1,9 +1,9 @@
 var randomInt = require('random-int')
 var io = require('socket.io-client')
-import DoNotSleep from 'nosleep.js'
+var NoSleep = require('nosleep.js')
 
 var socket = io.connect(ENV.socketUrl || 'http://localhost:3000')
-var noSleep = new DoNotSleep()
+var noSleep = new NoSleep()
 
 let bgEl = document.getElementById('background-content')
 let bgStyleTemplate = (color) => `background-color: ${color};`
