@@ -16,11 +16,10 @@ const changeColorOnSocketSubscription = () => {
 
 changeColorOnSocketSubscription()
 
+var noSleepBtn = document.getElementById('enable-nosleep')
 const enableNoSleep = () => {
   noSleep.enable()
-  document.removeEventListener('click', enableNoSleep, false)
-  document.removeEventListener('scroll', enableNoSleep, false)
+  noSleepBtn.remove()
   console.log('enabled')
 }
-document.addEventListener('click', enableNoSleep, false);
-document.addEventListener('scroll', enableNoSleep, false);
+noSleepBtn.addEventListener('click', enableNoSleep, false);
