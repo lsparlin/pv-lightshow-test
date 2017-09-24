@@ -19,6 +19,6 @@ changeColorOnSocketSubscription()
 var noSleepBtn = document.getElementById('enable-nosleep')
 const enableNoSleep = () => {
   noSleep.enable()
-  noSleepBtn.remove()
+  noSleepBtn.parentNode.remove()
 }
 noSleepBtn.addEventListener('click', enableNoSleep, false);

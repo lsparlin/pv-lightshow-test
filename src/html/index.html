@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body { margin: 0; }
+      .banner-button {
+        font-family: sans-serif;
+        text-align: center;
+        padding: 1rem 0;
+        background-color: #333;
+        opacity: .25;
+        cursor: pointer;
+      }
+      .banner-button h4 {
+        padding: 0;
+        margin: 0;
+      }
       .height-100 {
         height: 100%;
       }
@@ -13,7 +25,11 @@
 </head>
   <body>
     <div style="height: 120vh;">
-      <div class="height-100" id="background-content" style="background-color: #74d680"><button id="enable-nosleep">Keep Awake</button></div>
+      <div class="height-100" id="background-content" style="background-color: #74d680">
+        <div class="banner-button">
+          <h4 id="enable-nosleep">Keep Awake</h4>
+        </div>
+      </div>
     </div>
     <script type="text/javascript" src="/resources/js/bundle.js"></script>
   </body>
