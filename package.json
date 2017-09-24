@@ -31,6 +31,7 @@
     "css-loader": "^0.28.1",
     "jsx-transform": "^2.3.0",
     "node-sass": "^4.5.2",
+    "nosleep.js": "^0.7.0",
     "random-int": "^1.0.0",
     "sass-loader": "^6.0.5",
     "socket.io-client": "^2.0.3",
