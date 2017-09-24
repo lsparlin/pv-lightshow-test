@@ -20,6 +20,5 @@ var noSleepBtn = document.getElementById('enable-nosleep')
 const enableNoSleep = () => {
   noSleep.enable()
   noSleepBtn.remove()
-  window.scrollTo(0, 50)
 }
 noSleepBtn.addEventListener('click', enableNoSleep, false);
