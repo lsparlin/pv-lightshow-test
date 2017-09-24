@@ -15,4 +15,12 @@ const changeColorOnSocketSubscription = () => {
 }
 
 changeColorOnSocketSubscription()
-noSleep.enable()
+
+const enableNoSleep = () => {
+  noSleep.enable()
+  document.removeEventListener('click', enableNoSleep, false)
+  document.removeEventListener('scroll', enableNoSleep, false)
+  console.log('enabled')
+}
+document.addEventListener('click', enableNoSleep, false);
+document.addEventListener('scroll', enableNoSleep, false);
