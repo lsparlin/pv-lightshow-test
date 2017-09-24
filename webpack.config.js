@@ -33,8 +33,10 @@ module.exports = {
      module: { loaders: [
         { 
            test: /\.jsx?$/, 
-           include: JS_DIR,
-           exclude: /(node_modules|bower_components)/, 
+           include: [JS_DIR,
+             path.resolve(__dirname, 'node_modules')
+           ],
+           //exclude: /(node_modules)/, 
            loader: 'babel-loader' 
         },
         {
