@@ -14,7 +14,6 @@ const changeColorRandomOnLoad = () => {
 
 const changeColorOnSocketSubscription = () => {
   socket.on('change-color', data => {
-    console.log('change color', data)
     bgEl.setAttribute('style', bgStyleTemplate('#' + data.color))
   })
 }
