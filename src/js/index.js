@@ -1,7 +1,7 @@
 var randomInt = require('random-int')
 var io = require('socket.io-client')
 
-var socket = io.connect('https://pv-lightshow-server.herokuapp.com')
+var socket = io.connect(ENV.socketUrl || 'http://localhost:3000')
 
 let bgEl = document.getElementById('background-content')
 let bgStyleTemplate = (color) => `background-color: ${color};`

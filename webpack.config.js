@@ -19,8 +19,12 @@ module.exports = {
       }
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'ENV': {},
+        'ENV.socketUrl': JSON.stringify(process.env.SOCKET_URL)
+      }),
       new webpack.ProvidePlugin({
-        'ENV.config': 'config'
+        'ENV.config': 'config',
       }),
       new CopyWebpackPlugin([
         { from: 'src/html' },
