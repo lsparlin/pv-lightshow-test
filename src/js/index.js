@@ -6,11 +6,18 @@ var socket = io.connect(ENV.socketUrl || 'http://localhost:3000')
 var noSleep = new NoSleep()
 
 let bgEl = document.getElementById('background-content')
+let contentEl = document.getElementById('content')
 let bgStyleTemplate = (color) => `background-color: ${color};`
 
 const changeColorOnSocketSubscription = () => {
   socket.on('change-color', data => {
+    if (contentEl) {
+      contentEl.remove()
+    }
     bgEl.setAttribute('style', bgStyleTemplate('#' + data.color))
+  })
+  socket.on('thank-you-page', () => {
+    location.assign('/thanks')
   })
 }
 
