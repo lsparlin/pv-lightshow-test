@@ -16,8 +16,12 @@ const changeColorOnSocketSubscription = () => {
     }
     bgEl.setAttribute('style', bgStyleTemplate('#' + data.color))
   })
-  socket.on('thank-you-page', () => {
-    location.assign('/thanks')
+  socket.on('conclude', data => {
+    if (data && data.location) {
+      location.assign(data.location)
+    } else {
+      location.assign('/thanks')
+    }
   })
 }
 
