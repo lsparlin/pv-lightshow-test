@@ -1,13 +1,19 @@
-var randomInt = require('random-int')
+import axios from 'axios'
 var io = require('socket.io-client')
 import NoSleep from 'my-nosleep'
 
-var socket = io.connect(ENV.socketUrl || 'http://localhost:3000')
+let url = ENV.socketUrl || 'http://localhost:3000'
+var socket = io.connect(url)
 var noSleep = new NoSleep()
 
 let bgEl = document.getElementById('background-content')
 let contentEl = document.getElementById('content')
 let bgStyleTemplate = (color) => `background-color: ${color};`
+
+axios.get(url + '/settings').then(response => {
+  let settings = response.data
+  document.getElementById('introductoryText').textContent = settings.introductoryText
+})
 
 const changeColorOnSocketSubscription = () => {
   socket.on('change-color', data => {
