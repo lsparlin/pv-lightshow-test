@@ -29,6 +29,7 @@ module.exports = {
       }),
       new CopyWebpackPlugin([
         { from: 'src/html' },
+        { from: 'src/assets', to: 'assets' },
       ])
     ],
      module: { loaders: [
