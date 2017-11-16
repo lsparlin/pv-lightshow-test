@@ -38,7 +38,7 @@ const subscribeToSocketEvents = () => {
   setInterval(() => {
     startTime = Date.now()
     socket.emit('lat-ping')
-  }, 5000)
+  }, 2000)
   socket.on('lat-pong', () => latencyMs = Date.now() - startTime)
   socket.on('change-color', data => {
     if (contentEl) {
