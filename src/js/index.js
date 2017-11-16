@@ -20,19 +20,26 @@ axios.get(url + '/settings').then(response => {
 
 var timer
 var currentColor
+var latencyMs = 200
 const changeBackgroundColor =(colorData) => {
   if (colorData.color != currentColor) {
-    console.log('setting color ', colorData.color)
     bgEl.setAttribute('style', bgStyleTemplate('#' + colorData.color))
   }
+  
   currentColor = colorData.color
   clearTimeout(timer)
   if (colorData.next) {
-    timer = setTimeout(() => changeBackgroundColor(colorData.next), colorData.next.afterDur - 150)
+    timer = setTimeout(() => changeBackgroundColor(colorData.next), colorData.next.afterDur - (latencyMs + 10))
   }
 }
 
+var startTime
 const subscribeToSocketEvents = () => {
+  setInterval(() => {
+    startTime = Date.now()
+    socket.emit('lat-ping')
+  }, 5000)
+  socket.on('lat-pong', () => latencyMs = Date.now() - startTime)
   socket.on('change-color', data => {
     if (contentEl) {
       contentEl.remove()
