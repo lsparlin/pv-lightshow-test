@@ -20,7 +20,7 @@ axios.get(url + '/settings').then(response => {
 
 var timer
 var currentColor
-var latencyMs = 200
+var latencyMs = 50
 const changeBackgroundColor =(colorData) => {
   if (colorData.color != currentColor) {
     bgEl.setAttribute('style', bgStyleTemplate('#' + colorData.color))
