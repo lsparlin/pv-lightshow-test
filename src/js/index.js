@@ -43,8 +43,8 @@ const subscribeToSocketEvents = () => {
   }, 2000)
   socket.on('lat-pong', () => latencyMs = Date.now() - startTime)
   socket.on('change-color', data => {
-    document.getElementById(messageElId).textContent = data.message || ''
     changeBackgroundColor(data)
+    document.getElementById(messageElId).textContent = data.message || ''
   })
   socket.on('conclude', () => {
     location.assign(conclusionUrl)
