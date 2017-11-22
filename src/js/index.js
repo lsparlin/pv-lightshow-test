@@ -5,7 +5,9 @@ import NoSleep from 'my-nosleep'
 let url = ENV.socketUrl || 'http://localhost:3000'
 var socket = io.connect(url)
 var noSleep = new NoSleep()
+
 var conclusionUrl = '/thanks'
+const messageElId = 'contextMessage'
 
 let bgEl = document.getElementById('background-content')
 let contentEl = document.getElementById('content')
@@ -14,7 +16,7 @@ let bgStyleTemplate = (color) => `background-color: ${color};`
 axios.get(url + '/settings').then(response => {
   let settings = response.data
 
-  document.getElementById('introductoryText').textContent = settings.introductoryText
+  document.getElementById(messageElId).textContent = settings.introductoryText
   conclusionUrl = settings.conclusionUrl
 })
 
@@ -41,9 +43,7 @@ const subscribeToSocketEvents = () => {
   }, 2000)
   socket.on('lat-pong', () => latencyMs = Date.now() - startTime)
   socket.on('change-color', data => {
-    if (contentEl) {
-      contentEl.remove()
-    }
+    document.getElementById(messageElId).textContent = data.message || ''
     changeBackgroundColor(data)
   })
   socket.on('conclude', () => {
