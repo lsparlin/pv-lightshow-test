@@ -44,7 +44,8 @@ const subscribeToSocketEvents = () => {
   socket.on('lat-pong', () => latencyMs = Date.now() - startTime)
   socket.on('change-color', data => {
     changeBackgroundColor(data)
-    document.getElementById(messageElId).remove()
+    var messageEl = document.getElementById(messageElId)
+    messageEl != null && messageEl.remove()
   })
   socket.on('conclude', () => {
     location.assign(conclusionUrl)
