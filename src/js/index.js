@@ -47,6 +47,9 @@ const subscribeToSocketEvents = () => {
     var messageEl = document.getElementById(messageElId)
     messageEl != null && messageEl.remove()
   })
+  socket.on('stop', () => {
+    clearTimeout(timer)
+  })
   socket.on('conclude', () => {
     location.assign(conclusionUrl)
   })
